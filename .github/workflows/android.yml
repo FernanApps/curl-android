@@ -3,7 +3,10 @@ name: Test
 on:
   push:
     branches: [ master]
-
+env:
+  ## Sets environment variable
+  NDK_VERSION : r21e
+  
 jobs:
   # This workflow contains a single job called "build"
   build:
@@ -18,12 +21,11 @@ jobs:
         with:
           submodules: 'true'
       - name: Setup Android NDK
-      # uses: nttld/setup-ndk@b2abc75192ee2a1ec118c8238fd86dec6d96dc43
-        uses: nttld/setup-ndk@v1.0.6
+        uses: nttld/setup-ndk@v1.2.0
         id: setup-ndk
         with:
           # Exact version to use
-          ndk-version: r20
+          ndk-version: ${{ env.NDK_VERSION }}
           # Add installation directory to path
           add-to-path: false
       # 执行shell
@@ -47,6 +49,19 @@ jobs:
           export ANDROID_NDK_ROOT=${{ steps.setup-ndk.outputs.ndk-path }}
           ./start_build.sh
           tree
+          
+      - name: Create pre-release
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "pre-release"
+          prerelease: true
+          title : "Android Lib Curl - NDK ${{ env.NDK_VERSION }}"
+          files: |
+            ./android-lib-curl/**/include/
+            ./android-lib-curl/**/lib/
+            ./android-lib-openssl/**/include/
+            ./android-lib-openssl/**/lib/  
           
       
       #- name: Upload a Build Artifact  
