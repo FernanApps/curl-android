@@ -28,6 +28,8 @@ jobs:
           ndk-version: ${{ env.NDK_VERSION }}
           # Add installation directory to path
           add-to-path: false
+          local-cache: true
+
       # 执行shell
       - name: Dependencies
         run: |
