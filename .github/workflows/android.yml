@@ -30,20 +30,23 @@ jobs:
       - name: add autoconf automake libtool
         run: brew install autoconf automake libtool    
       - name: ndk bulid    
-        working-directory:   
+        working-directory: .
         run: |
           pwd  
           chmod +x start_build.sh
           echo ${{ steps.setup-ndk.outputs.ndk-path }}
           export ANDROID_NDK_ROOT=${{ steps.setup-ndk.outputs.ndk-path }}
           ./start_build.sh
-      - name: Upload a Build Artifact  
-        uses: actions/upload-artifact@v2
-        with:
-          name: ndk-openssl-curl-lib
-          path: |
-            ./android-lib-curl/**/include/
-            ./android-lib-curl/**/lib/
-            ./android-lib-openssl/**/include/
-            ./android-lib-openssl/**/lib/
+          tree
+          
+      
+      #- name: Upload a Build Artifact  
+      #  uses: actions/upload-artifact@v2
+      #  with:
+      #    name: ndk-openssl-curl-lib
+      #    path: |
+      #      ./android-lib-curl/**/include/
+      #      ./android-lib-curl/**/lib/
+      #      ./android-lib-openssl/**/include/
+      #      ./android-lib-openssl/**/lib/
             
