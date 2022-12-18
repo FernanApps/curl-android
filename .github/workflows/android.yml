@@ -27,8 +27,17 @@ jobs:
           # Add installation directory to path
           add-to-path: false
       # 执行shell
-      - name: add autoconf automake libtool
-        run: brew install autoconf automake libtool    
+      - name: Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install autoconf
+          sudo apt-get autoremove automake
+          sudo apt-get install automake
+          sudo apt-get update
+          sudo apt-get install libtool
+          
+     # - name: add autoconf automake libtool
+     #   run: brew install autoconf automake libtool    
       - name: ndk bulid    
         working-directory: .
         run: |
