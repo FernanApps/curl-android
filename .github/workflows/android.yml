@@ -75,4 +75,9 @@ jobs:
             ./android-lib-curl/**/lib/
             ./android-lib-openssl/**/include/
             ./android-lib-openssl/**/lib/
+            
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ndk-openssl-curl-lib      
            
