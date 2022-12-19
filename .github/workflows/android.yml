@@ -52,27 +52,27 @@ jobs:
           ./start_build.sh
           tree
           
-      - name: Create pre-release
-        uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "pre-release"
-          prerelease: true
-          title : "Android Lib Curl - NDK ${{ env.NDK_VERSION }}"
-          files: |
-            ./android-lib-curl/*/include/
-            ./android-lib-curl/*/lib/
-            ./android-lib-openssl/*/include/
-            ./android-lib-openssl/*/lib/  
+      #- name: Create pre-release
+      #  uses: "marvinpinto/action-automatic-releases@latest"
+      #  with:
+      #    repo_token: "${{ secrets.GITHUB_TOKEN }}"
+      #    automatic_release_tag: "pre-release"
+      #    prerelease: true
+      #    title : "Android Lib Curl - NDK ${{ env.NDK_VERSION }}"
+      #    files: |
+      #      ./android-lib-curl/*/include/
+      #      ./android-lib-curl/*/lib/
+      #      ./android-lib-openssl/*/include/
+      #      ./android-lib-openssl/*/lib/  
           
       
-      #- name: Upload a Build Artifact  
-      #  uses: actions/upload-artifact@v2
-      #  with:
-      #    name: ndk-openssl-curl-lib
-      #    path: |
-      #      ./android-lib-curl/**/include/
-      #      ./android-lib-curl/**/lib/
-      #      ./android-lib-openssl/**/include/
-      #      ./android-lib-openssl/**/lib/
-            
+      - name: Upload a Build Artifact  
+        uses: actions/upload-artifact@v2
+        with:
+          name: ndk-openssl-curl-lib
+          path: |
+            ./android-lib-curl/**/include/
+            ./android-lib-curl/**/lib/
+            ./android-lib-openssl/**/include/
+            ./android-lib-openssl/**/lib/
+           
