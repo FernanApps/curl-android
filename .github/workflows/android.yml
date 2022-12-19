@@ -60,10 +60,10 @@ jobs:
           prerelease: true
           title : "Android Lib Curl - NDK ${{ env.NDK_VERSION }}"
           files: |
-            ./android-lib-curl/**/include/
-            ./android-lib-curl/**/lib/
-            ./android-lib-openssl/**/include/
-            ./android-lib-openssl/**/lib/  
+            ./android-lib-curl/*/include/
+            ./android-lib-curl/*/lib/
+            ./android-lib-openssl/*/include/
+            ./android-lib-openssl/*/lib/  
           
       
       #- name: Upload a Build Artifact  
