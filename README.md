@@ -1,5 +1,5 @@
 # curl-android
-curl 交叉编译 Android
+curl 交叉编译 Android.
 
 
 ## curl编译
